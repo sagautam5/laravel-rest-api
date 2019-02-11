@@ -16,7 +16,8 @@ class ArticleController extends ApiController
      */
     public function index()
     {
-        //
+        $articles = Article::all();
+        return $this->success($articles);
     }
 
     /**
@@ -56,7 +57,11 @@ class ArticleController extends ApiController
      */
     public function show($id)
     {
-        //
+        $article =  Article::find($id);
+        if($article){
+            return $this->success($article);
+        }
+        return $this->notFound('Article Not Found');
     }
 
     /**
